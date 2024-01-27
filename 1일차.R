@@ -165,19 +165,43 @@ x_mean <- mean(x)
 
 str5_paste <- paste(str3, collapse = ' ※ ')
 
+# ------------------------------------------------------------------------------
+'''
+패키지(Package) : 함수와 변수의 꾸러미
+-> 하나의 패키지에 다양한 함수가 들어있음.
+-> 함수를 사용하려면 패키지를 먼저 설치를 해야한다.
+'''
 
+### ggplot2 패키지 : 그래프 시각화 패키지
+install.packages('ggplot2')   # 설치 명령어
+library(ggplot2)    # 패키지 로드 명령
 
+### ggplot2 함수 사용
+x <- c('a','a','b','c')
+qplot(x)  # qplot() : 빈도 함수 그래프
 
+'''
+거의 모든 패키지에는 함수를 테스트할 수 있는 테스트용
+데이터가 존재한다.
 
+ex) ggplot 에는 mpg 데이터가 존재한다.
+'''
+mpg <- ggplot2::mpg
 
+# mpg 데이터에 존재하는 차들의 고속도로 연비(hwy) 빈도 그래프
+qplot(data = mpg, x = hwy)
 
+# 도심연비 (cty) 빈도 그래프
+qplot(data = mpg , x = cty)
 
+# 구동 방식별 고속도로 연비 그래프
+qplot(data = mpg, x = drv, y = hwy)
 
+# 구동 방식별 고속도로 연비 선그래프
+qplot(data = mpg, x = drv, y = hwy, geom ='line')
 
-
-
-
-
+# 구동 방식별 고속도로 연비 상자 그림 + 색상
+qplot(data = mpg, x = drv, y = hwy, geom ='boxplot', colour = drv)
 
 
 
